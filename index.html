@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Datilologia - Aprenda Libras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Botão de informações -->
+        <button class="info-btn" id="infoBtn" aria-label="Informações">
+            <i class="fas fa-info-circle"></i>
+        </button>
+
+        <!-- Header -->
+        <header class="game-header">
+            <h1>🤟 Aprenda Datilologia em Libras</h1>
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Pontos:</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Nível:</span>
+                    <span class="value" id="level">Fácil</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Progresso:</span>
+                    <span class="value" id="wordProgress">1/15</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área da palavra -->
+        <section class="word-section">
+            <div class="word-display">
+                <h2>Soletre a palavra:</h2>
+                <div class="target-word" id="targetWord">GATO</div>
+            </div>
+            <div class="progress-display">
+                <h3>Seu progresso:</h3>
+                <div class="progress-letters" id="progressLetters">
+                    <span class="letter-slot empty">_</span>
+                    <span class="letter-slot empty">_</span>
+                    <span class="letter-slot empty">_</span>
+                    <span class="letter-slot empty">_</span>
+                </div>
+            </div>
+            <div class="attempts-info">
+                <span>Tentativas: <span id="attempts">0</span></span>
+            </div>
+        </section>
+
+        <!-- Teclado de Libras -->
+        <section class="keyboard-section">
+            <div class="keyboard-header">
+                <h3>Clique nas letras em Libras:</h3>
+                <div class="toggle-letters">
+                    <input type="checkbox" id="showLetters">
+                    <label for="showLetters">Mostrar letras abaixo das imagens</label>
+                </div>
+            </div>
+            <div class="keyboard hide-letters">
+                <!-- Primeira linha -->
+                <div class="keyboard-row">
+                    <button class="key" data-letter="Q" tabindex="0">
+                        <img src="assets/imagens/abc/Q.png" alt="Letra Q em Libras">
+                        <span class="letter-label">Q</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="W" tabindex="0">
+                        <img src="assets/imagens/abc/W.png" alt="Letra W em Libras">
+                        <span class="letter-label">W</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="E" tabindex="0">
+                        <img src="assets/imagens/abc/E.png" alt="Letra E em Libras">
+                        <span class="letter-label">E</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="R" tabindex="0">
+                        <img src="assets/imagens/abc/R.png" alt="Letra R em Libras">
+                        <span class="letter-label">R</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="T" tabindex="0">
+                        <img src="assets/imagens/abc/T.png" alt="Letra T em Libras">
+                        <span class="letter-label">T</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="Y" tabindex="0">
+                        <img src="assets/imagens/abc/Y.png" alt="Letra Y em Libras">
+                        <span class="letter-label">Y</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="U" tabindex="0">
+                        <img src="assets/imagens/abc/U.png" alt="Letra U em Libras">
+                        <span class="letter-label">U</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="I" tabindex="0">
+                        <img src="assets/imagens/abc/I.png" alt="Letra I em Libras">
+                        <span class="letter-label">I</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="O" tabindex="0">
+                        <img src="assets/imagens/abc/O.png" alt="Letra O em Libras">
+                        <span class="letter-label">O</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="P" tabindex="0">
+                        <img src="assets/imagens/abc/P.png" alt="Letra P em Libras">
+                        <span class="letter-label">P</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                </div>
+
+                <!-- Segunda linha -->
+                <div class="keyboard-row">
+                    <button class="key" data-letter="A" tabindex="0">
+                        <img src="assets/imagens/abc/A.png" alt="Letra A em Libras">
+                        <span class="letter-label">A</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="S" tabindex="0">
+                        <img src="assets/imagens/abc/S.png" alt="Letra S em Libras">
+                        <span class="letter-label">S</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="D" tabindex="0">
+                        <img src="assets/imagens/abc/D.png" alt="Letra D em Libras">
+                        <span class="letter-label">D</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="F" tabindex="0">
+                        <img src="assets/imagens/abc/F.png" alt="Letra F em Libras">
+                        <span class="letter-label">F</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="G" tabindex="0">
+                        <img src="assets/imagens/abc/G.png" alt="Letra G em Libras">
+                        <span class="letter-label">G</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="H" tabindex="0">
+                        <img src="assets/imagens/abc/H.png" alt="Letra H em Libras">
+                        <span class="letter-label">H</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="J" tabindex="0">
+                        <img src="assets/imagens/abc/J.png" alt="Letra J em Libras">
+                        <span class="letter-label">J</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="K" tabindex="0">
+                        <img src="assets/imagens/abc/K.png" alt="Letra K em Libras">
+                        <span class="letter-label">K</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="L" tabindex="0">
+                        <img src="assets/imagens/abc/L.png" alt="Letra L em Libras">
+                        <span class="letter-label">L</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                </div>
+
+                <!-- Terceira linha -->
+                <div class="keyboard-row">
+                    <button class="key" data-letter="Z" tabindex="0">
+                        <img src="assets/imagens/abc/Z.png" alt="Letra Z em Libras">
+                        <span class="letter-label">Z</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="X" tabindex="0">
+                        <img src="assets/imagens/abc/X.png" alt="Letra X em Libras">
+                        <span class="letter-label">X</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="C" tabindex="0">
+                        <img src="assets/imagens/abc/C.png" alt="Letra C em Libras">
+                        <span class="letter-label">C</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="V" tabindex="0">
+                        <img src="assets/imagens/abc/V.png" alt="Letra V em Libras">
+                        <span class="letter-label">V</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="B" tabindex="0">
+                        <img src="assets/imagens/abc/B.png" alt="Letra B em Libras">
+                        <span class="letter-label">B</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="N" tabindex="0">
+                        <img src="assets/imagens/abc/N.png" alt="Letra N em Libras">
+                        <span class="letter-label">N</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                    <button class="key" data-letter="M" tabindex="0">
+                        <img src="assets/imagens/abc/M.png" alt="Letra M em Libras">
+                        <span class="letter-label">M</span>
+                        <button class="zoom-btn" aria-label="Ampliar">🔍</button>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botões de ação -->
+        <section class="actions">
+            <button class="btn btn-secondary" id="resetBtn">
+                <i class="fas fa-redo-alt"></i> Recomeçar Palavra
+            </button>
+            <button class="btn btn-primary" id="nextBtn">
+                <i class="fas fa-arrow-right"></i> Próxima Palavra
+            </button>
+        </section>
+
+        <!-- Feedback -->
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <!-- Modal de ampliação -->
+    <div class="modal" id="zoomModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <img src="" alt="Letra ampliada" id="zoomImage">
+            <p class="modal-letter" id="modalLetter">A</p>
+        </div>
+    </div>
+
+    <!-- Modal de conclusão de palavra -->
+    <div class="modal" id="completeModal">
+        <div class="modal-content celebration">
+            <h2>🎉 Parabéns!</h2>
+            <p>Você completou a palavra <strong id="completedWord"></strong></p>
+            <p>Tentativas: <span id="finalAttempts"></span></p>
+            <button class="btn btn-primary" id="continueBtn">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Modal de final de jogo -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content game-over">
+            <h2>🏆 Jogo Concluído!</h2>
+            <div class="final-stats">
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <p class="stat-label">Pontuação Final</p>
+                    <p class="stat-value" id="finalScore">0</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p class="stat-label">Palavras Completadas</p>
+                    <p class="stat-value" id="totalWords">0</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <p class="stat-label">Precisão</p>
+                    <p class="stat-value" id="accuracy">0%</p>
+                </div>
+            </div>
+            <p class="congratulations-msg" id="congratsMsg">Excelente trabalho!</p>
+            <button class="btn btn-primary" id="playAgainBtn">
+                <i class="fas fa-play"></i> Jogar Novamente
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de informações -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content info-content">
+            <button class="modal-close" id="infoModalClose">&times;</button>
+            <h2><i class="fas fa-info-circle"></i> Sobre o Jogo</h2>
+            <div class="info-text">
+                <p><strong>🎓 Desenvolvido por:</strong></p>
+                <p class="developers">
+                    <i class="fas fa-user-graduate"></i> Isis Pereira<br>
+                    <i class="fas fa-user-graduate"></i> Beatriz Alvez
+                </p>
+                
+                <p><strong>🎓 Curso:</strong></p>
+                <p>Curso de Análise e Desenvolvimento de Sistemas<br>
+                   Campus Catu</p>
+                <p><strong>🏫 Instituição:</strong></p>
+                <p>Instituto Federal Baiano de Educação, Ciências e Tecnologia<br>
+                   Campus Catu</p>
+                
+                <p><strong>📚 Objetivo:</strong></p>
+                <p>Este jogo foi desenvolvido como trabalho de conclusão da disciplina optativa de Libras, com o objetivo de contribuir para o aprendizado da datilologia e apoiar a comunidade surda.</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
